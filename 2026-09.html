@@ -1,0 +1,198 @@
+<!doctype html><html lang='zh-Hant'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><meta name='robots' content='noindex,nofollow'><title>invest_note</title><style>
+:root{--bg:#141110;--card:#1e1a18;--line:#332c28;--fg:#e8ded4;--dim:#9a8d82;
+--gold:#d9b26a;--up:#e06c5a;--down:#4fa87d;--fix:#c98b3f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+.wrap{max-width:940px;margin:0 auto;padding:28px 18px 80px}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:.5px}
+h1 a{color:var(--gold);text-decoration:none}
+h1 a:hover{opacity:.75}
+.sub{color:var(--dim);font-size:13px;margin-bottom:26px}
+.day{color:var(--gold);font-size:13px;letter-spacing:1px;margin:30px 0 12px;
+border-bottom:1px solid var(--line);padding-bottom:6px}
+.day span{color:var(--dim);letter-spacing:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+padding:16px 18px;margin-bottom:14px}
+.card.fixed{border-color:#5a4426}
+.card h2{font-size:16px;margin:0 0 10px;font-weight:600;line-height:1.5}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;
+margin-right:6px;vertical-align:2px}
+.b-new{background:#2c3a30;color:#7fc79b;border:1px solid #3d5544}
+.b-fix{background:#3a2f1e;color:var(--fix);border:1px solid #5a4426}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;
+background:#2e2622;color:var(--gold);border:1px solid var(--line);margin-right:6px;
+vertical-align:2px}
+.pub{color:#6f635a;font-size:11.5px;font-weight:400;margin-left:4px}
+.fix{background:#241d13;border-left:3px solid var(--fix);border-radius:0 6px 6px 0;
+padding:10px 14px;margin:0 0 12px}
+.fix b{color:var(--fix);font-size:12px;display:block;margin-bottom:4px}
+.fix li{font-size:13px;color:#d6c4a8;margin-bottom:4px}
+.anchor{background:#1a2420;border-left:3px solid #4fa87d;border-radius:0 6px 6px 0;
+padding:10px 14px;margin:0 0 14px}
+.anchor b{color:#7fc79b;font-size:12px;display:block;margin-bottom:5px;
+letter-spacing:1px}
+.anchor p{margin:0 0 6px;font-size:13.5px;line-height:1.75;color:#cdc0b4}
+.anchor p:last-child{margin-bottom:0}
+.anchor p+p{color:var(--dim);font-size:13px}
+ul{margin:0;padding-left:18px}
+ul.notes>li{margin-bottom:12px;font-size:14px;line-height:1.75}
+ul.views{margin:6px 0 0;padding-left:16px;border-left:2px solid var(--line)}
+ul.views li{color:var(--dim);font-size:13px;line-height:1.7;margin-bottom:4px;
+list-style:none}
+ul.views li:before{content:"▸ ";color:var(--gold)}
+.stocks{margin-top:12px;border-top:1px solid var(--line)}
+.stock{padding:10px 0;border-bottom:1px solid var(--line)}
+.stock:last-child{border-bottom:none;padding-bottom:2px}
+.sname{font-size:13.5px;font-weight:600;margin-bottom:5px}
+.code{color:var(--gold);font-weight:600}
+.mets{display:flex;flex-wrap:wrap;gap:4px 6px}
+.met{font-size:12px;line-height:1.5;background:#262019;border:1px solid var(--line);
+border-radius:5px;padding:2px 7px;white-space:nowrap}
+.met i{color:var(--dim);font-style:normal;margin-right:5px;font-size:11px}
+.met em{color:#6f635a;font-style:normal;margin-left:5px;font-size:11px}
+.met.up{color:var(--up);border-color:#4a2f2a}
+.met.down{color:var(--down);border-color:#28453a}
+.slead{color:var(--dim);font-size:12.5px;line-height:1.65;margin-top:6px}
+.manual p{font-size:13.5px;line-height:1.75;margin:0 0 8px;color:var(--fg)}
+.brk{border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+.brk:first-of-type{border-top:none;padding-top:0;margin-top:4px}
+.brkhead{color:var(--gold);font-size:12px;letter-spacing:1px;margin-bottom:6px;
+text-transform:uppercase}
+.brkhead .pub{float:right;text-transform:none;letter-spacing:0}
+.card h2 .code{font-size:17px}
+a.shot{display:block;margin:12px 0;border:1px solid var(--line);border-radius:8px;
+overflow:hidden;background:#fff}
+a.shot img{display:block;width:100%;height:auto}
+.facts{margin:10px 0 4px}
+.fhead{color:var(--gold);font-size:11.5px;letter-spacing:1px;margin:16px 0 6px;
+text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:4px}
+.fsub{color:var(--fg);font-size:12.5px;font-weight:600;margin:9px 0 3px;
+opacity:.85}
+.fsub:before{content:"— ";color:var(--dim)}
+.facts ul.notes>li{margin-bottom:4px;font-size:13px;line-height:1.65;
+color:var(--fg)}
+.up{color:var(--up)}.down{color:var(--down)}
+.empty{color:#6f635a;font-size:13px}
+#lock{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:40px 0}
+#pw{background:var(--card);border:1px solid var(--line);color:var(--fg);
+border-radius:8px;padding:9px 12px;font-size:14px;width:200px;outline:none}
+#pw:focus{border-color:var(--gold)}
+#go{background:var(--gold);border:none;color:#1a1512;border-radius:8px;
+padding:9px 18px;font-size:14px;font-weight:600;cursor:pointer}
+#err{color:var(--up);font-size:13px;width:100%}
+.sec{color:var(--gold);font-size:13px;letter-spacing:2px;margin:26px 0 10px}
+a.row{display:block;background:var(--card);border:1px solid var(--line);
+border-radius:8px;padding:10px 14px;margin-bottom:8px;color:var(--fg);
+text-decoration:none;font-size:14px}
+a.row:hover{border-color:var(--gold)}
+a.row .pub{float:right}
+a.back{display:inline-block;color:var(--dim);font-size:13px;
+text-decoration:none;margin-bottom:18px}
+a.back:hover{color:var(--gold)}
+/* 首頁兩個來源左右並排, 各佔一半; 窄螢幕 (< 620px) 自動堆疊成上下。
+   月份頁裡的 .srcblock 不在 .srcgrid 裡, 所以照舊是整行寬。 */
+/* 兩欄永遠各佔一半, 手機也不換行 —— 內容只有「08 月 / 19 篇」這種短字串,
+   窄螢幕塞得下, 上下堆疊反而要捲。 */
+.srcgrid{display:flex;gap:10px;align-items:flex-start}
+.srcgrid>.srcblock{flex:1 1 0;min-width:0;margin-bottom:0;padding:2px 10px 12px}
+.srcgrid>.srcblock .sec{font-size:12px;letter-spacing:0;word-break:break-word}
+.srcgrid>.srcblock a.row{padding:9px 10px;font-size:13px}
+.srcgrid>.srcblock a.row .pub{float:none;display:block;margin-top:2px}
+.srcblock{border:1px solid var(--line);border-radius:12px;padding:2px 14px 14px;
+margin-bottom:22px;background:#191513}
+.srcblock>.sec{margin-top:16px;padding-bottom:8px;
+border-bottom:1px solid var(--line)}
+.srcblock>.sec span{color:var(--dim);font-size:12px;letter-spacing:0}
+.srcblock .card{background:#221d1a}
+details.recent{margin-top:34px;border-top:1px solid var(--line);padding-top:6px}
+details.recent>summary{color:var(--dim);font-size:13px;letter-spacing:1px;
+cursor:pointer;padding:10px 0;list-style:none;user-select:none}
+details.recent>summary::-webkit-details-marker{display:none}
+details.recent>summary:before{content:"▸ ";color:var(--gold)}
+details.recent[open]>summary:before{content:"▾ "}
+details.recent>summary:hover{color:var(--gold)}
+</style></head><body><div class='wrap'><h1><a href='index.html'>invest_note</a></h1><div class='sub'>產業筆記　2026 年 09 月</div><a class='back' href='index.html'>← 回總覽</a><div id='lock'><input id='pw' type='password' placeholder='密碼' autocomplete='current-password'><button id='go'>解鎖</button><div id='err'></div></div><div id='content'></div></div><script>
+const P={"s": "vM0PYhwGnD8GUm+rr3h34Q==", "i": "602yFrd4HAONh60/", "c": "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"}, ITER=300000;
+// 兩層記憶, 為了「只在第一次進來時輸入密碼」:
+//   KEYCACHE (sessionStorage) 存推導好的金鑰 —— 同一個分頁換頁時瞬間解開
+//   PWCACHE  (localStorage)   存密碼本身 —— 關掉瀏覽器、換分頁、隔天再來都還在
+// 為什麼不是把金鑰存 localStorage 就好: 每次重新產站都會換一組新的 salt,
+// 存金鑰的話一有更新就失效、又要重打; 存密碼則可以用新 salt 重新推導。
+// 代價是密碼以明文躺在這台瀏覽器的 localStorage 裡 —— 共用裝置就別讓它記。
+const KEYCACHE="invest_note_key", PWCACHE="invest_note_pw";
+const enc=new TextEncoder(), dec=new TextDecoder();
+const b64d=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const b64e=b=>btoa(String.fromCharCode.apply(null,new Uint8Array(b)));
+const $=id=>document.getElementById(id);
+
+async function keyFromPassword(pw){
+  const km=await crypto.subtle.importKey("raw",enc.encode(pw),"PBKDF2",
+                                         false,["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    {name:"PBKDF2",salt:b64d(P.s),iterations:ITER,hash:"SHA-256"},
+    km,{name:"AES-GCM",length:256},true,["decrypt"]);
+}
+async function reveal(key){
+  const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b64d(P.i)},key,b64d(P.c));
+  $("content").innerHTML=dec.decode(pt);
+  $("lock").style.display="none";
+  // 頁內錨點要等內容注入之後才存在
+  if(location.hash){const t=$(location.hash.slice(1)); if(t)t.scrollIntoView();}
+}
+function remember(pw,key){
+  try{sessionStorage.setItem(KEYCACHE,b64e(key));}catch(e){}
+  try{localStorage.setItem(PWCACHE,pw);}catch(e){}
+}
+function forget(){
+  try{sessionStorage.removeItem(KEYCACHE);}catch(e){}
+  try{localStorage.removeItem(PWCACHE);}catch(e){}
+}
+async function tryCached(){
+  // 1) 同分頁的金鑰快取: 最快, salt 沒換的話直接開
+  let raw=null;
+  try{raw=sessionStorage.getItem(KEYCACHE);}catch(e){}
+  if(raw){
+    try{
+      await reveal(await crypto.subtle.importKey("raw",b64d(raw),{name:"AES-GCM"},
+                                                 true,["decrypt"]));
+      return true;
+    }catch(e){
+      try{sessionStorage.removeItem(KEYCACHE);}catch(e2){}   // salt 換過了
+    }
+  }
+  // 2) 記住的密碼: 用這一頁的 salt 重新推導, 所以更新過也解得開
+  let pw=null;
+  try{pw=localStorage.getItem(PWCACHE);}catch(e){}
+  if(!pw)return false;
+  $("err").textContent="解鎖中 ...";
+  try{
+    const key=await keyFromPassword(pw);
+    await reveal(key);
+    remember(pw,await crypto.subtle.exportKey("raw",key));
+    $("err").textContent="";
+    return true;
+  }catch(e){
+    forget();                                   // 密碼改過了, 清掉重問
+    $("err").textContent="";
+    return false;
+  }
+}
+async function submit(){
+  const pw=$("pw").value;
+  if(!pw)return;
+  $("err").textContent="解鎖中 ...";
+  try{
+    const key=await keyFromPassword(pw);
+    await reveal(key);
+    remember(pw,await crypto.subtle.exportKey("raw",key));
+  }catch(e){
+    $("err").textContent="密碼不對";
+    $("pw").value="";
+    $("pw").focus();
+  }
+}
+$("go").addEventListener("click",submit);
+$("pw").addEventListener("keydown",e=>{if(e.key==="Enter")submit();});
+tryCached().then(ok=>{if(!ok)$("pw").focus();});
+</script></body></html>
